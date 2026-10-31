@@ -46,7 +46,7 @@ public class OrderRepository : IOrderRepository
     {
         using var conn=Database.Connection();
         conn.Open();
-        var query="update orders customer_id=@customer_id,amount=@amount,created_at=@created_at where id=@id";
+        var query="update orders set customer_id=@customer_id,amount=@amount,created_at=@created_at where id=@id";
         var resilt = await conn.ExecuteAsync(query,Order);
         return resilt>0;
     }
